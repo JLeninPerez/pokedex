@@ -1,0 +1,37 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: pokedex
+    container_name: app
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    ports:
+      - "8030:80"
+      - "443:443"
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
