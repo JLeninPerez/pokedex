@@ -8,9 +8,12 @@ services:
       dockerfile: docker/Dockerfile
     image: pokedex
     container_name: app
+    depends_on:
+      - redis
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
+      REDIS_HOST: redis
     working_dir: /var/www
     networks:
       - app-network
@@ -30,6 +33,12 @@ services:
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+
+  #Redis Service
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - 16379:6379
 
 #Docker Networks
 networks:

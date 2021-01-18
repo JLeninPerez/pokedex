@@ -7,6 +7,7 @@ COPY composer.lock composer.json /var/www/
 WORKDIR /var/www
 
 # Install dependencies
+RUN pecl install -o -f redis
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -27,6 +28,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
+RUN docker-php-ext-enable redis
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 

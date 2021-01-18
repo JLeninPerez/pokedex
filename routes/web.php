@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PokedexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'pokedex'], function () {
+    Route::get('/', [PokedexController::class, 'index']);
+    Route::get('/id/{pokemonId}', [PokedexController::class, 'getInfoById']);
+    Route::get('/name', [PokedexController::class, 'getInfoByName']);
+});
+
+Route::fallback(function () {
+    return view('not_found')->with(['message' => 'page']);
 });
