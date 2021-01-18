@@ -10,7 +10,7 @@ Para poder trabajar con esto necesitamos tener los siguientes items preinstalado
 
 -------------
 ## Pasos a seguir
-- Clona este repositorio `git clone`
+- Clona este repositorio `git clone https://github.com/JLeninPerez/pokedex.git`
 - Correr el comando `sudo docker-compose up -d`
 - El proyecto esta expuesto en el puerto `http://localhost:8030/pokedex`
 -------------
