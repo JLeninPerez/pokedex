@@ -14,7 +14,7 @@
             var myAlert = document.getElementById('characterAlert')
             var bsAlert = new bootstrap.Alert(myAlert)
             function closeAlert() {
-                document.getElementById('myAlert').remove();
+                document.getElementById('characterAlert').remove();
             }
         </script>
     @endpush
