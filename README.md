@@ -12,7 +12,7 @@ Para poder trabajar con esto necesitamos tener los siguientes items preinstalado
 ## Pasos a seguir
 - Clona este repositorio `git clone https://github.com/JLeninPerez/pokedex.git`
 - Correr el comando `sudo docker-compose up -d`
-- Correr `docker-compose exec app composer install && docker-compose exec app php -r "file_exists('.env') || copy('.env.example', '.env');" && docker-compose exec app php artisan key:generate --ansi && docker-compose up -d`
+- Correr `sudo docker-compose exec app composer install && sudo docker-compose exec app php -r "file_exists('.env') || copy('.env.example', '.env');" && sudo docker-compose exec app php artisan key:generate --ansi && sudo docker-compose up -d`
 - El proyecto esta expuesto en el puerto `http://localhost:8030/pokedex`
 -------------
 ## Tests
